@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import User from '../Models/userMode.js'
+import User from '../Models/userModel.js'
 import genarateToken from '../utils/genarateToken.js';
 
 // @desc Auth user/set token
@@ -8,7 +8,6 @@ import genarateToken from '../utils/genarateToken.js';
 
 const authUser=asyncHandler(async(req,res)=>{
     const {email,password}=req.body
-     console.log(email,password)
     const user=await User.findOne({email})
     if(user && (await user.matchPassword(password)))
         {
@@ -87,8 +86,15 @@ const logoutUser=asyncHandler(async(req,res)=>{
 // @access private
 
 const getUserProfile=asyncHandler(async(req,res)=>{
+    const {_id,name,email,mobilenum}=req.user
+const user={
+    _id,
+    name,
+    email,
+    mobilenum
+}
 
-    res.status(200).json({message:'User Profile'})
+    res.status(200).json({user})
 })
 
 // @desc UPDATE user profile
@@ -96,6 +102,24 @@ const getUserProfile=asyncHandler(async(req,res)=>{
 // @access private
 
 const updateUserProfile=asyncHandler(async(req,res)=>{
+    const user=await User.findById(req.user._id)
+    if (user) {
+        
+        user.name=req.body.name || user.name
+        user.email=req.body.email || user.email
+        user.mobilenum=req.body.mobilenum || user.mobilenum
+        const updatedUser =await user.save();
+        res.status(200).json({
+            _id:updatedUser._id,
+            name:updatedUser.name,
+            email:updatedUser.email,
+            mobilenum:updatedUser.mobilenum
+        })
+    } else {
+        res.status(404);
+        throw new  Error('User not found')
+        
+    }
 
     res.status(200).json({message:'Update User Profile'})
 })
