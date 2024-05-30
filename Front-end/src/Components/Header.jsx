@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import './Header.css'
+import { Link } from 'react-router-dom';
 
 
 function Header() {
@@ -9,7 +10,7 @@ function Header() {
         <div className='nav-content '>
         <h1  className='nav-logo'>User Management System </h1>
         <div className='nav-right'>
-            <button>Profile</button>
+            <Link to='/profile'><button>Profile</button></Link>
         </div>
        
         </div>

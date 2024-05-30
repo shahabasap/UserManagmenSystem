@@ -92,12 +92,13 @@ const logoutUser=asyncHandler(async(req,res)=>{
 // @access private
 
 const getUserProfile=asyncHandler(async(req,res)=>{
-    const {_id,name,email,mobilenum}=req.user
+    const {_id,name,email,mobilenum,imageUrl}=req.user
 const user={
     _id,
     name,
     email,
-    mobilenum
+    mobilenum,
+    imageUrl
 }
 
     res.status(200).json({user})

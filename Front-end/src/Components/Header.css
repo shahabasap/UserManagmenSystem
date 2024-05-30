@@ -45,6 +45,13 @@
     padding: 10px;
     border-radius: 10px;
     background-color: transparent;
+    border: 2px solid red;
+    color: red;
+}
+.nav-right button:hover{
+    color: white;
+    background-color: red;
+    border: 1px solid white;
 }
 .nav-black{
     background-color: black;

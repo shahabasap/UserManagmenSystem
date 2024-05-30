@@ -1,0 +1,40 @@
+.Profile-Screen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+.middleDiv{
+    width: 45%;
+    height: 600px;
+    background-color: white;
+    margin-top: 6%;
+    border-radius: 15px;
+}
+.image-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.profile-image{
+    border-radius: 50%;
+    width: 155px;
+    margin-top: 7%;
+}
+.user-details div {
+    font-size: 35px;
+    font-weight: 300;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* border-bottom: 1px solid gray; */
+}
+.user-details div span{
+   color: red;
+   font-weight: 600;
+}
+.user-details{
+    display: grid;
+    margin-left: 8%;
+    margin-top: 10%;
+
+}
