@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./RegisterForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RegisterForm = () => {
@@ -9,32 +9,37 @@ const RegisterForm = () => {
   const password = useRef(null);
   const mobilenum = useRef(null);
   const [image, setImage] = useState(null);
+  const navigate=useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+
+
       let imageUrl = "";
       if (image) {
         const data = new FormData();
         data.append("file", image);
         data.append("upload_preset", "userProfile");
-        data.append("cloud_name", "djl33exai");
+       console.log(data);
 
         const response = await axios.post(
           "https://api.cloudinary.com/v1_1/djl33exai/image/upload",
           data
         );
 
+
+
         if (response.data) {
           imageUrl = response.data.url; // Get the URL of the uploaded image
-          console.log("Image uploaded successfully:", imageUrl);
+          
         } else {
           console.error("Image upload failed");
           return;
         }
       }
-
+         
       if (name.current && email.current && password.current && mobilenum.current) {
         const DataInsertion = await axios.post('/api/users/', {
           name: name.current.value,
@@ -45,7 +50,7 @@ const RegisterForm = () => {
         });
 
         if (DataInsertion) {
-          console.log("Data is entered successfully");
+          navigate('/')
         }
       }
     } catch (error) {

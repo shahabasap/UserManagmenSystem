@@ -17,6 +17,10 @@ const userSchema=mongoose.Schema({
     mobilenum:{
         type:Number,
         required:true
+    },
+    imageUrl:{
+        type:String,
+        required:true
     }
 },{
     timestamps:true
