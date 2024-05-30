@@ -1,7 +1,8 @@
 import express from 'express'
+const Router=express.Router()
 import { authUser, getUserProfile, logoutUser, registerUser, updateUserProfile } from '../Controllers/userController.js'
 import { protect } from '../Middleware/authMiddleware.js'
-const Router=express.Router()
+
 
 
 

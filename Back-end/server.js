@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import UserRoutes from './Routes/userRoute.js'
+import adminRoutes from './Routes/adminRoutes.js'
 import { errorHandler, notFound } from './Middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import cookieParser from 'cookie-parser'
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 app.use('/users',UserRoutes)
+app.use('/admin',adminRoutes)
 app.get('/',(req,res)=>res.send('Server is ready'))
 
 app.use(notFound)
