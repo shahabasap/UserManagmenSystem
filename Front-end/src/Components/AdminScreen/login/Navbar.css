@@ -1,0 +1,101 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    
+    
+}
+
+.navbar-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logout-button {
+    padding: 0.55rem .2rem; /* Increased padding for a bigger button */
+    background-color: transparent;
+    border: 2px solid white;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+    
+}
+
+.logout-button:hover {
+    background-color: #fff;
+    color: black;
+}
+
+/* Login--- */
+/* Add a background image to the entire page */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1483232539664-d89822fb5d3e?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvdG8lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww'); /* Replace with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Center the login container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: add a dark overlay */
+}
+
+/* Style the login box */
+.login-box {
+    background-color: #fff;
+    padding: 4rem; /* Significantly increased padding for larger box */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increased shadow for more emphasis */
+    width: 500px; /* Significantly increased width */
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 2rem; /* Increased margin for more spacing */
+    font-size: 2rem; /* Larger font size */
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Increased margin for more spacing */
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem; /* Increased margin for more spacing */
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem; /* Increased padding for larger input fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 1.25rem; /* Increased padding for larger button */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.25rem; /* Increased font size */
+}
+
+.login-button:hover {
+    background-color: #555;
+}

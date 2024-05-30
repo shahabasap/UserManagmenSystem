@@ -1,0 +1,52 @@
+.profile-edit-container {
+    margin: 2rem auto; /* Center the container */
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-edit-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-container {
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Increased margin for more spacing */
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem; /* Increased padding for larger input fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.save-button {
+    width: 100%;
+    padding: 1rem; /* Increased padding for larger button */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.save-button:hover {
+    background-color: #555;
+}
