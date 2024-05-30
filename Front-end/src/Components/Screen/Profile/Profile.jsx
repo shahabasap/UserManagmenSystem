@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 const Profile = () => {
 
   const[userData,setData]=useState(null)
@@ -28,7 +29,7 @@ const Profile = () => {
                 <div><span>Name</span> :{userData?.name}</div> <br />
                 <div><span>Email</span>:{userData?.email}</div> <br />
                 <div><span>Number</span>:{userData?.mobilenum}</div><br />
-                 <button className='edit-button'>Edit</button>
+                 <Link to='/profileEdit'><button className='edit-button'>Edit</button></Link>
             </div>
             
          </div>

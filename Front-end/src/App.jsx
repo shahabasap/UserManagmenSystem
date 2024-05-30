@@ -6,6 +6,7 @@ import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Home from './Components/Screen/Home/Home';
 import Welcome from './Components/Screen/Home/Welcome';
 import ProfileScreen from './Components/Screen/Profile/ProfileScreen';
+import ProfileEdit from './Components/Screen/ProfileEdit/ProfileEdit';
 
 
 
@@ -23,7 +24,7 @@ function App() {
           <Route exact path='/register' element={<Register />}/>
           <Route exact path='/home' element={< Home />}/>
           <Route exact path='/profile' element={< ProfileScreen />}/>
-          <Route exact path='/profile' element={< ProfileScreen />}/>
+          <Route exact path='/profileEdit' element={< ProfileEdit />}/>
         </Routes>
       </div>
     </Router>
