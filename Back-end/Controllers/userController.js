@@ -7,6 +7,7 @@ import genarateToken from '../utils/genarateToken.js';
 // @access Public
 
 const authUser=asyncHandler(async(req,res)=>{
+  
     const {email,password}=req.body
     const user=await User.findOne({email})
     if(user && (await user.matchPassword(password)))
@@ -36,6 +37,7 @@ const authUser=asyncHandler(async(req,res)=>{
 // @access Public
 
 const registerUser=asyncHandler(async(req,res)=>{
+    console.log("Back end working")
 
     const{name,email,password,mobilenum}=req.body
 

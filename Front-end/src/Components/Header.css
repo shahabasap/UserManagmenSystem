@@ -1,0 +1,51 @@
+
+.nav{
+    position: fixed;
+    top: 0;
+    padding: 20Px;
+    height: 30px;
+    width: 100%;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+   
+}
+.nav-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 5px solid rgb(238, 233, 233);
+    height: 100px;
+
+}
+
+.nav-logo{
+    position: fixed;
+    left: 0;
+    object-fit: contain;
+    padding-left: 20px;
+    cursor: pointer;
+    background: transparent;
+    color: rgb(223, 22, 22);
+    font-weight: 800;
+    font-family: monospace;
+
+}
+.nav-right{
+    display: inline-flex;
+    justify-content: space;
+    position: fixed;
+    right: 20px;
+    top: 30px;
+}
+.nav-right button{
+    margin-left: 10px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+.nav-black{
+    background-color: black;
+}
