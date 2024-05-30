@@ -40,7 +40,7 @@ const RegisterForm = () => {
         }
       }
          
-      if (name.current && email.current && password.current && mobilenum.current) {
+      if (name.current && email.current && password.current && mobilenum.current &&imageUrl) {
         const DataInsertion = await axios.post('/api/users/', {
           name: name.current.value,
           email: email.current.value,

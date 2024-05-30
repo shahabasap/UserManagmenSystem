@@ -66,6 +66,7 @@ const registerUser=asyncHandler(async(req,res)=>{
                 email:user.email,
                 
             })
+            
         }else{
             res.status(400);
             throw new Error('Invalied User Data')
@@ -115,12 +116,15 @@ const updateUserProfile=asyncHandler(async(req,res)=>{
         user.name=req.body.name || user.name
         user.email=req.body.email || user.email
         user.mobilenum=req.body.mobilenum || user.mobilenum
+        user.imageUrl=req.body.imageUrl || user.imageUrl
         const updatedUser =await user.save();
         res.status(200).json({
             _id:updatedUser._id,
             name:updatedUser.name,
             email:updatedUser.email,
-            mobilenum:updatedUser.mobilenum
+            mobilenum:updatedUser.mobilenum,
+            imageUrl:updatedUser.imageUrl
+
         })
     } else {
         res.status(404);
