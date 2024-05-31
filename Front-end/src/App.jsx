@@ -10,6 +10,7 @@ import ProfileEdit from './Components/Screen/ProfileEdit/ProfileEdit';
 import AdminLoginHome from './Components/AdminScreen/login/adminLoginHome';
 import AdminHome from './Components/AdminScreen/AdminHome/AdminHomeScreen';
 import ProfileEditAdmin from './Components/AdminScreen/ProfileEdit/ProfileEdit';
+import AddUser from './Components/AdminScreen/AddUser/addUser';
 
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route exact path='/admin' element={< AdminLoginHome />}/>
           <Route exact path='/admin/home' element={<AdminHome />}/>
           <Route exact path='/admin/profile/:id' element={<ProfileEditAdmin />}/>
+          <Route exact path='/admin/addUser' element={< AddUser/>}/>
         
 
 

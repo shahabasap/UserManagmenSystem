@@ -2,29 +2,30 @@ import React, { useEffect, useState } from 'react';
 import './AdminHome.css';
 import Navbar from '../Nav';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminHome = () => {
     const [users, setUsers] = useState([]);
-    const[isDelete,setDelete]=useState(false)
+    const[isModified,setModified]=useState(false)
+    const navigate=useNavigate()
 
     useEffect(() => {
         axios.get('/api/admin/userData')
             .then((response) => {
                 setUsers(response.data.usersData);
-                setDelete(false)
+                setModified(false)
             })
             .catch((error) => {
                 console.error(error.message);
             });
             
-    }, [isDelete]);
+    }, [isModified]);
 
     const deleteUser=(userid)=>{
         axios.get(`/api/admin/deleteUser/${userid}`)
         .then((response)=>{
            console.log("response ",response.data)
-           setDelete(true)
+           setModified(true)
         }).catch((error)=>{
             console.log(error.message);
         })
@@ -61,7 +62,9 @@ const AdminHome = () => {
                         </tbody>
                     </table>
                 </div>
-                <button className="add-button">Add User</button>
+                <button onClick={()=>
+                    navigate('/admin/addUser')
+                } className="add-button">Add User</button>
             </div>
         </div>
     );
