@@ -49,3 +49,6 @@ color: gray;
     cursor: pointer;
     text-decoration: underline;
 }
+.error{
+    color: #e50914;
+}

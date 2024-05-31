@@ -2,17 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import "./ProfileEditForm.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast,ToastContainer  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileEditForm = () => {
   const [userData, setData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // State to manage edit mode
+  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("/api/users/profile")
       .then((response) => {
         setData(response.data.user);
-        console.log(response.data.user);
       })
       .catch((error) => {
         console.log(error.message);
@@ -22,73 +24,100 @@ const ProfileEditForm = () => {
   const name = useRef(null);
   const email = useRef(null);
   const mobilenum = useRef(null);
-  const navigate = useNavigate();
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [mobileNumError, setMobileNumError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (name.current || email.current || mobilenum.current) {
-        const DataUpdation = await axios.put("/api/users/profile", {
-          name: name?.current.value,
-          email: email?.current.value,
-          mobilenum: mobilenum?.current.value,
-        });
+      const updatedData = {
+        name: name.current.value,
+        email: email.current.value,
+        mobilenum: mobilenum.current.value,
+      };
 
-        if (DataUpdation) {
-          console.log("data updated successfully");
-          setIsEditing(false)
+      // Validation
+      let isValid = true;
+      if (!updatedData.name.trim()) {
+        setNameError("Name cannot be empty");
+        isValid = false;
+      } else {
+        setNameError("");
+      }
+
+      if (!/^\S+@\S+\.\S+$/.test(updatedData.email)) {
+        setEmailError("Invalid email format");
+        isValid = false;
+      } else {
+        setEmailError("");
+      }
+
+      if (!/^\d{10}$/.test(updatedData.mobilenum)) {
+        setMobileNumError("Mobile number must be 10 digits");
+        isValid = false;
+      } else {
+        setMobileNumError("");
+      }
+
+      if (isValid) {
+        const response = await axios.put("/api/users/profile", updatedData);
+
+        if (response) {
+          toast.success("Update SuccessFully");
+          setIsEditing(false);
+        }
+        else{
+          toast.error("Update Gone Wrong");
         }
       }
     } catch (error) {
+      toast.error("Update Gone Wrong");
       console.error("Error:", error.message);
     }
   };
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
   return (
     <div className="signupScreen">
-      <form onSubmit={handleSubmit}>
+      <form>
         <h1>Edit Profile</h1>
         <input
           ref={name}
           type="text"
           placeholder="User name"
           defaultValue={userData?.name}
-          disabled={!isEditing} // Disable the input when not editing
+          disabled={!isEditing}
         />
+        {nameError && <div className="error">{nameError}</div>}
         <input
           ref={email}
           type="email"
           placeholder="Email Address"
           defaultValue={userData?.email}
-          disabled={!isEditing} // Disable the input when not editing
+          disabled={!isEditing}
         />
+        {emailError && <div className="error">{emailError}</div>}
         <input
           ref={mobilenum}
           type="number"
           placeholder="Mobile Number"
           defaultValue={userData?.mobilenum}
-          disabled={!isEditing} // Disable the input when not editing
+          disabled={!isEditing}
         />
-
+        {mobileNumError && <div className="error">{mobileNumError}</div>}
         {isEditing ? (
-          <button type="submit">Save</button>
+          <button type="button" onClick={handleSubmit}>Save</button>
         ) : (
-          <button type="button" onClick={handleEditClick}>
-            Edit
-          </button>
+          <button type="button" onClick={() => setIsEditing(true)}>Edit</button>
         )}
-
         <h5>
           <Link to="/home">
             <span className="signupScreen_link">Home</span>
           </Link>
         </h5>
       </form>
+      <ToastContainer /> 
     </div>
   );
 };

@@ -1,40 +1,40 @@
 import React, { useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Navbar.css';
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { login, selectAdmin } from '../../../features/admin/adminSlice';
+import { login } from '../../../features/admin/adminSlice';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginAdmin = () => {
-    const email=useRef(null)
-    const password=useRef(null)
+    const email = useRef(null);
+    const password = useRef(null);
     
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const dispatch=useDispatch(selectAdmin)
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
+        if (email.current.value && password.current.value) {
+            axios.post('/api/admin/', {
+                email: email.current.value,
+                password: password.current.value
+            }).then((response) => {
+                dispatch(login({
+                    email: email.current.value,
+                    password: password.current.value
+                }));
 
-    const handleLogin=async(e)=>{
-                e.preventDefault()
-                
-                if (email.current.value && password.current.value) {
+                toast.success("Login Successful");
+                navigate('/admin/home');
+            }).catch((error) => {
+                toast.error("Login Failed");
+                console.log("Error:", error.message);
+            });
+        }
+    };
 
-                    axios.post('/api/admin/',{
-                        email:email.current.value,
-                        password:password.current.value
-                    }).then((response)=>{
-                         dispatch(login({
-                            email:email.current.value,
-                            password:password.current.value
-                         }))
-                        navigate('/admin/home')
-
-                    }).catch((error)=>{
-                        console.log(error.message);
-                    })
-                }
-
-    }
     return (
         <div className="login-container">
             <div className="login-box">
@@ -51,6 +51,7 @@ const LoginAdmin = () => {
                     <button type="submit" className="login-button">Login</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };
