@@ -20,7 +20,7 @@ const authAdmin=(req,res)=>{
         if (email===envUserName && password===envPassword) {
             console.log("correct")
              res.status(200).json({
-                message:"User Credetials are correct"
+                email:envUserName
              })
         }
         else{

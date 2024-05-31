@@ -2,11 +2,13 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import axios from 'axios'
+import { useDispatch } from 'react-redux';
 
 const LoginAdmin = () => {
     const email=useRef(null)
     const password=useRef(null)
     const navigate=useNavigate()
+
 
     const handleLogin=async(e)=>{
                 e.preventDefault()
@@ -17,7 +19,7 @@ const LoginAdmin = () => {
                         email:email.current.value,
                         password:password.current.value
                     }).then((response)=>{
-                        console.log(response.data);
+                      
                         navigate('/admin/home')
 
                     }).catch((error)=>{

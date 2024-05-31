@@ -2,9 +2,14 @@ import React, { useRef } from 'react';
 import './LoginForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { login } from '../../../features/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 
 const LoginForm = () => {
+
+    const dispatch=useDispatch()
+
   const email=useRef(null)
   const password=useRef(null)
   const navigate=useNavigate()
@@ -21,6 +26,7 @@ const LoginForm = () => {
         if(user)
           {
             console.log('user login succesfully')
+            dispatch(login(user))
             navigate('/home')
           }
       

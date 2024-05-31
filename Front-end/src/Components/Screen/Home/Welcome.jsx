@@ -1,11 +1,15 @@
 import React, { useRef } from 'react';
 import './Welcome.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../features/user/userSlice';
 
 
 
 const Welcome = () => {
-  
+   
+  const user=useSelector(selectUser)
+ 
   return (
     
     <div className='Profile-Screen'>
