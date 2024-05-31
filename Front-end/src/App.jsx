@@ -33,7 +33,7 @@ function App() {
 
           <Route exact path='/admin' element={< AdminLoginHome />}/>
           <Route exact path='/admin/home' element={<AdminHome />}/>
-          <Route exact path='/admin/profile' element={<ProfileEditAdmin />}/>
+          <Route exact path='/admin/profile/:id' element={<ProfileEditAdmin />}/>
         
 
 

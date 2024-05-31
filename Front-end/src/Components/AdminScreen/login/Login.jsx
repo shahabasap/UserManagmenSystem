@@ -1,19 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import axios from 'axios'
 
 const LoginAdmin = () => {
+    const email=useRef(null)
+    const password=useRef(null)
+    const navigate=useNavigate()
+
+    const handleLogin=async(e)=>{
+                e.preventDefault()
+                
+                if (email.current.value && password.current.value) {
+
+                    axios.post('/api/admin/',{
+                        email:email.current.value,
+                        password:password.current.value
+                    }).then((response)=>{
+                        console.log(response.data);
+                        navigate('/admin/home')
+
+                    }).catch((error)=>{
+                        console.log(error.message);
+                    })
+                }
+
+    }
     return (
         <div className="login-container">
             <div className="login-box">
                 <h2>Login</h2>
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username" name="username" required />
+                        <input ref={email} type="text" id="username" name="username" required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" required />
+                        <input ref={password} type="password" id="password" name="password" required />
                     </div>
                     <button type="submit" className="login-button">Login</button>
                 </form>
