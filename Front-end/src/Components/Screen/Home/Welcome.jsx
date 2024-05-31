@@ -20,7 +20,7 @@ const Welcome = () => {
             AH9P7XyZ1dL/AKmPsf4HR0H+pX2/gWeR6pHvImBmWmcQDYgDNEAzRANkSCDZEgGxAg2RMSDJEEGRAK9pr+/h+r+bOHq30l7Dxvyh/qafs/M6WC3HDNGkdOBkbSOVrJ/dx/WL7sju6B/vy/4/miJFdPWmIAAAAAB//9k=" alt="Profile-image" />
             </div>
             <div className="user-details">
-                <div><span>Welcome</span> to user management system demo Arun Gosh !!</div> <br />
+                <div><span>Welcome</span> to user management system demo Website !!</div> <br />
                 
             </div>
             
