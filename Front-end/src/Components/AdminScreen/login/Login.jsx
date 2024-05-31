@@ -3,11 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
+import { login, selectAdmin } from '../../../features/admin/adminSlice';
 
 const LoginAdmin = () => {
     const email=useRef(null)
     const password=useRef(null)
+    
     const navigate=useNavigate()
+
+    const dispatch=useDispatch(selectAdmin)
 
 
     const handleLogin=async(e)=>{
@@ -19,7 +23,10 @@ const LoginAdmin = () => {
                         email:email.current.value,
                         password:password.current.value
                     }).then((response)=>{
-                      
+                         dispatch(login({
+                            email:email.current.value,
+                            password:password.current.value
+                         }))
                         navigate('/admin/home')
 
                     }).catch((error)=>{

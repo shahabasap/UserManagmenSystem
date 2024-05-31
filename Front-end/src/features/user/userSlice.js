@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+ 
 const storedUserInfo = localStorage.getItem('userInfo');
 const initialState = {
     user: storedUserInfo ? JSON.parse(storedUserInfo) : null,

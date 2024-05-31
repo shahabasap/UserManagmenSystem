@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Nav';
 import './ProfileEdit.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ProfileEditAdmin = () => {
@@ -88,6 +88,7 @@ const ProfileEditAdmin = () => {
                         <button className="save-button" type="submit">
                             {isEditing ? 'Save Changes' : 'Edit Profile'}
                         </button>
+                        <Link to='/admin/home'><span className='Back-track'>Back</span></Link>
                     </form>
                 </div>
             </div>

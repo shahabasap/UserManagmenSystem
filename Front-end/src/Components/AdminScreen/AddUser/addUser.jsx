@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import Navbar from '../Nav';
 import "./addUser.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+
 
 const AddUser = () => {
     const name = useRef(null);
@@ -68,6 +70,7 @@ const AddUser = () => {
                     <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
                     <button type="submit">Add User</button>
+                    <Link to='/admin/home'><span className="Back-track">Back</span></Link>
                 </form>
             </div>
         </div>

@@ -13,10 +13,14 @@ import ProfileEditAdmin from './Components/AdminScreen/ProfileEdit/ProfileEdit';
 import AddUser from './Components/AdminScreen/AddUser/addUser';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/user/userSlice';
+import { selectAdmin } from './features/admin/adminSlice';
 
 
 function App() {
   const user = useSelector(selectUser);
+  const admin=useSelector(selectAdmin)
+
+
 
   return (
     <Router>
@@ -28,10 +32,10 @@ function App() {
           <Route exact path="/profile" element={user ? <ProfileScreen /> : <Login />} />
           <Route exact path="/profileEdit" element={user ? <ProfileEdit /> : <Login />} />
 
-          <Route exact path="/admin" element={<AdminLoginHome />} />
-          <Route exact path="/admin/home" element={<AdminHome />} />
-          <Route exact path="/admin/profile/:id" element={<ProfileEditAdmin />} />
-          <Route exact path="/admin/addUser" element={<AddUser />} />
+          <Route exact path="/admin" element={admin?<AdminHome />:<AdminLoginHome />} />
+          <Route exact path="/admin/home" element={admin?<AdminHome />:<AdminLoginHome />} />
+          <Route exact path="/admin/profile/:id" element={admin?<ProfileEditAdmin />:<AdminLoginHome />} />
+          <Route exact path="/admin/addUser" element={admin?<AddUser />:<AdminLoginHome />} />
         </Routes>
       </div>
     </Router>
