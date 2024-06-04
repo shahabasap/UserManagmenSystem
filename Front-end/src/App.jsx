@@ -20,6 +20,8 @@ function App() {
   const user = useSelector(selectUser);
   const admin=useSelector(selectAdmin)
 
+  console.log("user",user);
+  console.log("adming",admin);
 
 
   return (

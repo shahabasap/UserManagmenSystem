@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoginForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { login } from '../../../features/user/userSlice';
+import { userLogin } from '../../../features/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,7 +54,7 @@ const LoginForm = () => {
       const user = response.data;
 
       if (user) {
-        dispatch(login(user));
+        dispatch(userLogin(user));
         navigate('/home');
         toast.success("Logged in Successfully"); // Success toast
       }

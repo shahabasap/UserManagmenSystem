@@ -1,15 +1,23 @@
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
-import User from "../Models/userModel.js";
 
-const protect = asyncHandler(async (req, res, next) => {
+
+const ProtectAdmin = asyncHandler(async (req, res, next) => {
   let token;
-  token = req.cookies.jwt;
+  token = req.cookies.adminJwt;
+
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = await User.findById(decoded.userId).select("-password");
-      next();
+      if(decoded.adminCred === process.env.password)
+        {
+            req.admin = {
+                username:"admin@gmail.com"
+              }
+              next();
+
+        }
+      
     } catch (error) {
       res.status(401);
       throw new Error("Not authorized , invalid token");
@@ -20,4 +28,4 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-export { protect };
+export { ProtectAdmin };

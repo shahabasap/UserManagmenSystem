@@ -1,6 +1,7 @@
 import expressAsyncHandler from "express-async-handler"
 import User from "../Models/userModel.js"
 import asyncHandler from 'express-async-handler'
+import genarateTokenAdmin from '../utils/genarateAdminToken.js'
 
 
 
@@ -18,7 +19,7 @@ const authAdmin=(req,res)=>{
    
         const {email,password}=req.body
         if (email===envUserName && password===envPassword) {
-            console.log("correct")
+            genarateTokenAdmin(res,envPassword)
              res.status(200).json({
                 email:envUserName
              })
@@ -196,7 +197,11 @@ const updateUser=async(req,res)=>{
 
 const logout=(req,res)=>{
     try {
-        console.log("Hi login")
+       res.cookie('adminJwt','',{
+        httpOnly:true,
+        expires:new Date(0)
+       })
+       res.status(200).json({message:"admin Loged out"})
         
     } catch (error) {
         console.log(error.message)

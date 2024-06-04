@@ -1,59 +1,55 @@
-
-
-.nav{
-    position: fixed;
-    top: 0;
-    padding: 20Px;
-    height: 30px;
-    width: 100%;
-    z-index: 2;
-    
-   
-}
-.nav-content{
+/* Base styles for the navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
-    height: 100px;
-    z-index: 2;
-    
-
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
 }
 
-.nav-logo{
-    position: fixed;
-    left: 0;
-    object-fit: contain;
-    padding-left: 20px;
+/* Styles for the heading in the navbar */
+.navbar-heading {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Container for the right side of the navbar */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Link button styles */
+.navbar-right a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Profile button styles */
+.navbar-right button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
     cursor: pointer;
-    background: transparent;
-    color: white;
-    font-weight: 1000;
-    
+    border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
 
+/* Profile button hover effect */
+.navbar-right button:hover {
+    background-color: #555;
 }
-.nav-right{
-    display: inline-flex;
-    justify-content: space;
-    position: fixed;
-    right: 20px;
-    top: 30px;
+
+/* Logout button specific styles */
+.logout-button {
+    background-color: #c00;
 }
-.nav-right button{
-    margin-left: 10px;
-    width: 100px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: transparent;
-    border: 2px solid red;
-    color: red;
-}
-.nav-right button:hover{
-    color: white;
-    background-color: red;
-    border: 1px solid white;
-}
-.nav-black{
-    background-color: black;
+
+.logout-button:hover {
+    background-color: #d00;
 }

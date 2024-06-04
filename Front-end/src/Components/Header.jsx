@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../features/user/userSlice';
+import { userLogout, selectUser } from '../features/user/userSlice';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -13,7 +13,7 @@ function Header() {
     const handleLogout = async () => {
         try {
             await axios.post('/api/users/logout');
-            dispatch(logout()); // Dispatch logout action
+            dispatch(userLogout()); // Dispatch logout action
             Swal.fire({
                 icon: 'success',
                 title: 'Logged out',
@@ -47,17 +47,16 @@ function Header() {
     };
 
     return (
-        <div className='nav-black'>
-            <div className='nav-content'>
-                <h1 className='nav-logo'>User Management System</h1>
-                {user ? (
-                    <div className='nav-right'>
-                        <Link to='/profile'><button>Profile</button></Link>
-                        <button onClick={confirmLogout}>Logout</button>
-                    </div>
-                ) : null}
-            </div>
+        <nav className="navbar">
+    <div className="navbar-heading">User Management System</div>
+    {user ? (
+        <div className="navbar-right">
+            <Link to="/profile"><button>Profile</button></Link>
+            <button onClick={confirmLogout} className="logout-button">Logout</button>
         </div>
+    ) : null}
+</nav>
+
     );
 }
 

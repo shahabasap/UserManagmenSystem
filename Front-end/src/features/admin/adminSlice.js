@@ -7,16 +7,16 @@ const initialState = {
 };
 
 const adminSlice = createSlice({
-    name: 'auth',
+    name: 'adminAuth',
     initialState,
     reducers: {
-        login: (state, action) => {
+        adminLogin: (state, action) => {
             state.admin = action.payload;
             state.isAdmin = true;
             localStorage.setItem('adminInfo', JSON.stringify(action.payload));
         },
 
-        logout: (state) => {
+        adminLogout: (state) => {
             state.admin = null;
             state.isAdmin = false;
             localStorage.removeItem('adminInfo');
@@ -24,6 +24,6 @@ const adminSlice = createSlice({
     }
 });
 
-export const { login, logout } = adminSlice.actions;
+export const { adminLogin, adminLogout } = adminSlice.actions;
 export const selectAdmin = (state) => state.admin.isAdmin;
 export default adminSlice.reducer;

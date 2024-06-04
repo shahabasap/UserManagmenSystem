@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { login } from '../../../features/admin/adminSlice';
+import { adminLogin } from '../../../features/admin/adminSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,9 +21,8 @@ const LoginAdmin = () => {
                 email: email.current.value,
                 password: password.current.value
             }).then((response) => {
-                dispatch(login({
+                dispatch(adminLogin({
                     email: email.current.value,
-                    password: password.current.value
                 }));
 
                 toast.success("Login Successful");

@@ -1,7 +1,7 @@
 import React from 'react';
 import './login/Navbar.css';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../features/admin/adminSlice';
+import { adminLogout } from '../../features/admin/adminSlice';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
             confirmButtonText: 'Yes, log out!'
         }).then((result) => {
             if (result.isConfirmed) {
-                dispatch(logout());
+                dispatch(adminLogout());
                 Swal.fire({
                     icon: 'success',
                     title: 'Logged out',
